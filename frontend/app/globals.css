@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+  :root {
+    --background: 220 10% 8%; /* Very dark desaturated blue/gray */
+    --foreground: 210 20% 90%; /* Soft light gray */
+    --card: 220 10% 12%; /* Slightly lighter than background for cards */
+    --card-foreground: 210 20% 90%;
+    --popover: 220 10% 12%;
+    --popover-foreground: 210 20% 90%;
+    --primary: 200 70% 50%; /* Professional blue/teal accent */
+    --primary-foreground: 220 10% 98%; /* White for contrast on primary */
+    --secondary: 210 10% 20%; /* Darker gray for secondary elements */
+    --secondary-foreground: 210 20% 90%;
+    --muted: 210 10% 30%; /* Medium gray for muted text/elements */
+    --muted-foreground: 210 10% 60%; /* Lighter muted gray */
+    --accent: 210 10% 20%;
+    --accent-foreground: 210 20% 90%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 210 10% 25%; /* Subtle border color */
+    --input: 210 10% 20%;
+    --ring: 200 70% 50%; /* Ring color matches primary */
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+
+@theme inline {
+  --animate-aurora: aurora 60s linear infinite;
+  @keyframes aurora {
+    from {
+      background-position:
+        50% 50%,
+        50% 50%;
+    }
+    to {
+      background-position:
+        350% 50%,
+        350% 50%;
+    }
+  }
+}
+
+
+@layer utilities {
+  /* Removed shimmer, float, and glow animations for a cleaner look */
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+  
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus styles for accessibility */
+:focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--foreground));
+}
+
+/* Glassmorphism effects - made more subtle */
+.glass {
+  background: rgba(255, 255, 255, 0.03); /* Very subtle white tint */
+  backdrop-filter: blur(8px); /* Slightly less blur */
+  border: 1px solid rgba(255, 255, 255, 0.08); /* Softer border */
+}
