@@ -208,7 +208,3 @@ Open your browser and navigate to **`http://localhost:3000`**.
 | `/api/processing-config` | `GET`/`POST` | Fetches or updates text preprocessing configuration parameters. |
 
 ---
-
-## 📄 License
-
-Distributed under the MIT License. See `LICENSE` for more information.
